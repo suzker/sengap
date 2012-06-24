@@ -14,7 +14,11 @@ var GeoUpdateInterval = 3000;
 
 Ext.define('sengap.controller.GeoLive', {
 	extend: 'Ext.app.Controller',
-
+	requires: [
+		'sengap.model.GeoFootprint',
+		'sengap.store.GeoFootprint'
+	],
+	
 	config: {
 		refs: { // add the geolivepanel to reference by id
 			geolivepanel: '#geolivepanel'
@@ -61,9 +65,22 @@ function updateToGpsForm(lat, lng, time){
  * to acquire geolocations from the PhoneGap(cordova) API
  */
 function requestGeoLocation(){
+	// get the store reference by name
+	var geoftstore = Ext.getStore('GeoFootprint');
+	
 	GeoWatchId = navigator.geolocation.watchPosition(
 		 function onSuccess(position){ // on success callback
 		 	updateToGpsForm(position.coords.latitude, position.coords.longitude, position.timestamp);
+		 	
+		 	// add to store making it persistent
+		 	geoftstore.add({
+		 		time: position.timestamp,
+		 		lat: position.coords.latitude,
+		 		lng: position.coords.longitude
+		 	});
+		 	// re-sync
+		 	geoftstore.sync();
+
 		 	console.log('Successful updated at' + position.timestamp + ' :' + position.coords.latitude + ', ' + position.coords.longitude);
 		 },
 		 function onError(err){ // on error callback
