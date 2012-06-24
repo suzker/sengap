@@ -3,6 +3,8 @@
  * 
  *  @requires:
  *  	1. navigator.geolocation.watchPosition (Cordova)
+ *  	2. sengap.model.GeoFootprint
+ *  	3. sengap.store.GeoFootprint
  * 	@author: Zhiliang SU (zsu2 [at] buffalo.edu)
  *  @revisit: Mon Jun 25, 2012
  */

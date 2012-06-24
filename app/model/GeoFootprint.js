@@ -8,6 +8,8 @@
  
 Ext.define('sengap.model.GeoFootprint',{
 	extend:'Ext.data.Model',
+	requires: ['Ext.data.proxy.LocalStorage'],
+	
 	config:{
 		fields: ['id', 'time', 'lat', 'lng']
 	}
