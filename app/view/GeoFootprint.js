@@ -10,6 +10,7 @@
 Ext.define('sengap.view.GeoFootprint',{
 	extend: 'Ext.Panel',
 	xtype: 'geofootprintpanel',
+	id: 'geofootprintpanel',
 	requires: ['Ext.dataview.List'],
 	
 	config: {
@@ -28,7 +29,7 @@ Ext.define('sengap.view.GeoFootprint',{
 				//requires: ['Sengap.store.GeoFootprints'],
 
 				config: {
-				title: 'Geo Footprints',
+				title: 'Geo Footprints'
 				//itemTpl: '{lat} {lng}',
 				//store: 'GeoFootprints'
 				}

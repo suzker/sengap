@@ -11,7 +11,7 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-
+	controllers: ['GeoLive'],
     views: ['Main', 'GeoLive', 'GeoFootprint'],
 
     icon: {

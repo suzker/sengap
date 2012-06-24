@@ -10,6 +10,7 @@
 Ext.define("sengap.view.GeoLive",{
 	extend: 'Ext.Panel',
 	xtype: 'geolivepanel',
+	id: 'geolivepanel',
 	requires: 'Ext.form.FieldSet',
 	
 	config: {
