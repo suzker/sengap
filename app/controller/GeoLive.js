@@ -91,7 +91,8 @@ function requestGeoLocation(){
 		 	console.log(err);
 		 },
 		 { // additional options
-		 	frequency: GeoUpdateInterval
+		 	frequency: GeoUpdateInterval,
+		 	enableHighAccuracy: true
 		 }
 		);
 }
