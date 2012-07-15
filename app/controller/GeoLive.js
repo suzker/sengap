@@ -6,7 +6,7 @@
  *  	2. sengap.model.GeoFootprint
  *  	3. sengap.store.GeoFootprint
  * 	@author: Zhiliang SU (zsu2 [at] buffalo.edu)
- *  @revisit: Sat July 14, 2012
+ *  @revisit: Sat July 15, 2012
  */
 
 // Global cordova geolocation watch id
@@ -40,7 +40,7 @@ Ext.define('sengap.controller.GeoLive', {
 	},
 
 	doGpsLiveWatch: function(){
-		updateToGpsForm('Acquiring Latitude...', 'Acquiring Longitude...', 'Acquiring Timestamp...');
+		updateToGpsForm('Acquiring Latitude...', 'Acquiring Longitude...', 'Acquiring Timestamp...', 'Acquiring Timestamp...');
 		requestGeoLocation();
 	},
 
@@ -102,7 +102,7 @@ function requestGeoLocation(){
 		 	
 		 },
 		 function onError(err){ // on error callback
-		 	updateToGpsForm('Err', 'Err', 'Err');
+		 	updateToGpsForm('Err', 'Err', 'Err', 'Err');
 		 	Ext.Msg.alert('Error', 'Failed when requesting GEO Location.' + '\n' + ' code: ' + err.code + '\n' + 'msg: ' + err.message, Ext.emptyFn);
 		 },
 		 { // additional options
@@ -144,7 +144,7 @@ function isBetterLocation(newLocation, currentLocation){
     accuracyDelta = (newLocation.coords.accuracy - currentLocation.coords.accuracy);
     isLessAccurate = (accuracyDelta > 0);
     isMoreAccurate = (accuracyDelta < 0);
-    isSignificantlyLessAccurate = (accuracyDelta > 50);
+    isSignificantlyLessAccurate = (accuracyDelta > AccuracyThreshold);
     
     // 2nd rule: choose a more accruate one if they are about the same age
     if (isMoreAccurate) {
