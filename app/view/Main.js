@@ -17,6 +17,10 @@ Ext.define("sengap.view.Main", {
             },
             {
 				xtype: 'geofootprintpanel'
-            }]
+            },
+            {
+            	xtype: 'geomappanel'
+            }
+            ]
     }
 });

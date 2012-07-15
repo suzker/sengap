@@ -4,7 +4,7 @@
  *  	1. Ext.form.FieldSet
  *  	2. Ext.TitleBar
  * 	@author 	Zhiliang Su (zsu2 [at] buffalo.edu)
- *  @revisit 	Mon Jul 15
+ *  @revisit 	Sun Jul 15
  */
  
 Ext.define("sengap.view.GeoLive",{

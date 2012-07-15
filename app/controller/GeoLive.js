@@ -6,7 +6,7 @@
  *  	2. sengap.model.GeoFootprint
  *  	3. sengap.store.GeoFootprint
  * 	@author: Zhiliang SU (zsu2 [at] buffalo.edu)
- *  @revisit: Sat July 15, 2012
+ *  @revisit: Sun July 15, 2012
  */
 
 // Global cordova geolocation watch id

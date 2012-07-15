@@ -14,8 +14,8 @@ Ext.application({
 	
     stores: ['GeoFootprint'],
     models: ['GeoFootprint'],
-	controllers: ['GeoLive'],
-    views: ['Main', 'GeoLive', 'GeoFootprint'],
+	controllers: ['GeoLive', 'GeoMap'],
+    views: ['Main', 'GeoLive', 'GeoFootprint', 'GeoMap'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
