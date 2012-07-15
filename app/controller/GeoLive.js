@@ -20,7 +20,7 @@ var TimeThreshold = 60000; // 1 min
 // Constant: Accuracy Threshold/tolerance
 var AccuracyThreshold = 50; // in meter
 
-Ext.define('sengap.controller.GeoLive', {isBetterLocation
+Ext.define('sengap.controller.GeoLive', {
 	extend: 'Ext.app.Controller',
 	requires: [
 		'sengap.model.GeoFootprint',
@@ -60,10 +60,11 @@ Ext.define('sengap.controller.GeoLive', {isBetterLocation
  *
  *  to display the lat lng time value to the form.
  */
-function updateToGpsForm(lat, lng, time){
+function updateToGpsForm(lat, lng, time, accuracy){
 	Ext.getCmp('gpsStatLat').setValue(lat);
 	Ext.getCmp('gpsStatLng').setValue(lng);
 	Ext.getCmp('gpsStatTime').setValue(time);
+	Ext.getCmp('gpsStatAccuracy').setValue(accuracy);
 }
 
 /*
@@ -75,12 +76,13 @@ function updateToGpsForm(lat, lng, time){
 function requestGeoLocation(){
 	// get the store reference by name
 	var geoftstore = Ext.getStore('GeoFootprint');
+	filedSetComponent =  Ext.getCmp('gpsStatusFieldSet');
 	
 	GeoWatchId = navigator.geolocation.watchPosition(
 		 function onSuccess(position){ // on success callback
 		 	
 		 	if (isBetterLocation(position, GeoCurrentBestPosition)){
-		 		updateToGpsForm(position.coords.latitude, position.coords.longitude, position.timestamp);
+		 		updateToGpsForm(position.coords.latitude, position.coords.longitude, position.timestamp, position.coords.accuracy);
 			 	// add to store making it persistent
 			 	geoftstore.add({
 			 		time: position.timestamp,
@@ -91,10 +93,11 @@ function requestGeoLocation(){
 		 		geoftstore.sync();
 		 		
 		 		// **for debugging
+		 		filedSetComponent.setInstructions("Update accepted!");
 		 		
 		 	} else {
 		 		// **for debugging
-		 		
+		 		filedSetComponent.setInstructions("Update rejected!");
 		 	}
 		 	
 		 },

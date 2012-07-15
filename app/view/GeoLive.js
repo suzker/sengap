@@ -4,7 +4,7 @@
  *  	1. Ext.form.FieldSet
  *  	2. Ext.TitleBar
  * 	@author 	Zhiliang Su (zsu2 [at] buffalo.edu)
- *  @revisit 	Mon Jun 25
+ *  @revisit 	Mon Jul 15
  */
  
 Ext.define("sengap.view.GeoLive",{
@@ -34,6 +34,7 @@ Ext.define("sengap.view.GeoLive",{
 				xtype: 'fieldset',
 				title: 'GPS Status',
 				name: 'statusField',
+				id:	'gpsStatusFieldSet',
 				instructions: 'tracking your move 8-D',
             		
 				items: [{// the fileds inside the fieldset
@@ -50,10 +51,17 @@ Ext.define("sengap.view.GeoLive",{
 						},
 						{
 							xtype: 'textfield',
+							id: 'gpsStatAccuracy',
+							label: 'Accuracy',
+							readOnly: true
+						},
+						{
+							xtype: 'textfield',
 							id: 'gpsStatTime',
 							label: 'Time',
 							readOnly: true
-						}]
+						}
+						]
             }]
 	}
 });
